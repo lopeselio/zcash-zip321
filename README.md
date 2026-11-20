@@ -63,6 +63,10 @@ be formatted again without losing anything.
 - Every example in ZIP-321, plus the test vectors from the reference Rust `zip321` crate.
 - The 60 Unified Address and 8 F4Jumble vectors from [zcash-test-vectors](https://github.com/zcash/zcash-test-vectors),
   and the address vectors from `zcash_address`.
+- The grammar edge cases where implementations have diverged (`test/grammar.test.ts`): upper-case schemes,
+  parameters without values, empty `&&` segments and malformed `%` escapes, among others. Several are still open in
+  the reference crate: [librustzcash#3164](https://github.com/zcash/librustzcash/pull/3164),
+  [#3277](https://github.com/zcash/librustzcash/pull/3277) and [#3278](https://github.com/zcash/librustzcash/pull/3278).
 - A live [Thus Spoke Zakura](https://github.com/zcashlabs/thus-spoke-zakura) regtest node, whose server parses with the
   reference crate. URIs this library formats are accepted there, URIs THS generates parse here, and invalid URIs are
   rejected by both.
@@ -75,7 +79,7 @@ decoder rejects it.
 ```sh
 npm install
 npm test                 # unit tests
-npm run test:integration # against THS (starts one with the `ths` launcher; needs Docker), or set THS_API_URL
+npm run test:integration # against THS (starts one with the `ths` launcher, in Docker or with THS_NATIVE=1), or set THS_API_URL
 npm run build
 ```
 
