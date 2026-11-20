@@ -111,5 +111,9 @@ npm run test:integration # against THS (starts one with the `ths` launcher, in D
 npm run build
 ```
 
+Releases are published from GitHub Actions with [trusted publishing](https://docs.npmjs.com/trusted-publishers), so
+no npm token is stored and every version carries npm provenance. To release, bump `version` in `package.json`, push,
+and publish a GitHub Release tagged `vX.Y.Z`; the Publish workflow checks the tag, runs the tests and publishes.
+
 MIT licensed. The test vectors in `test/fixtures` come from zcash-test-vectors (MIT) by way of the `zcash_address` and
 `f4jumble` crates.
