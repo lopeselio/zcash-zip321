@@ -22,6 +22,15 @@ memoText(payments[0].memo!); // 'order 42'
 network;                     // 'main'
 ```
 
+## Install
+
+```sh
+npm install zip321
+```
+
+An ES module with TypeScript types and no dependencies. It runs in Node 20+, browsers and edge runtimes;
+the parser and address checks are about 7 kB gzipped.
+
 ## What it checks
 
 - **The grammar.** It rejects `address.0` (leading zeros), duplicate parameters, parameters without an address,
@@ -75,6 +84,8 @@ One erratum turned up along the way: the ZIP's second `req-asset` example is 74 
 decoder rejects it.
 
 ## Develop
+
+Development needs Node 22.18+, which runs the TypeScript tests directly.
 
 ```sh
 npm install

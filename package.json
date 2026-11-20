@@ -15,7 +15,7 @@
     "url": "https://github.com/lopeselio/zip321-js/issues"
   },
   "engines": {
-    "node": ">=22.18"
+    "node": ">=20"
   },
   "sideEffects": false,
   "exports": {
@@ -26,6 +26,7 @@
   },
   "files": [
     "dist",
+    "src",
     "README.md"
   ],
   "scripts": {
@@ -34,7 +35,8 @@
     "test": "node --test test/*.test.ts",
     "test:integration": "THS_INTEGRATION=1 node --test --test-timeout=900000 test/integration.test.ts",
     "check": "npm run typecheck && npm test && npm run build",
-    "prepare": "npm run build"
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run check"
   },
   "keywords": [
     "zcash",
