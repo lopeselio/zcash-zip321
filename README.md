@@ -6,6 +6,8 @@ Parse, build and validate [ZIP-321](https://zips.z.cash/zip-0321) Zcash payment 
 Strict where the ZIP says MUST, with real address validation, and no dependencies. It runs
 in Node, browsers and edge runtimes.
 
+[npm](https://www.npmjs.com/package/zcash-zip321) · [try it in the playground](https://lopeselio.github.io/zip321-playground/)
+
 ```ts
 import { formatPaymentRequest, parsePaymentRequest, memoText } from 'zcash-zip321';
 
