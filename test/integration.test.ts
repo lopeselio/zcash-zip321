@@ -1,6 +1,6 @@
 // Cross-checks against a real Thus Spoke Zakura instance, whose ZIP-321 parser is the reference
 // Rust `zip321` crate. Runs with THS_INTEGRATION=1. Uses THS_API_URL if set, otherwise starts
-// a disposable instance with the `ths` launcher (needs Docker).
+// a disposable instance with the `ths` launcher (Docker, or its native runtime with THS_NATIVE=1).
 import { after, before, describe, test } from 'node:test';
 import assert from 'node:assert/strict';
 import { spawn, execFile, type ChildProcess } from 'node:child_process';
@@ -126,7 +126,9 @@ async function startTHS(): Promise<{ api: string; launcher: ChildProcess }> {
   const bin =
     process.env.THS_BIN ?? (existsSync(join(homedir(), '.local/bin/ths')) ? join(homedir(), '.local/bin/ths') : 'ths');
   const name = `zip321-${randomBytes(3).toString('hex')}`;
-  const launcher = spawn(bin, ['--name', name, 'start', '--no-open'], { stdio: ['ignore', 'pipe', 'pipe'] });
+  // THS_NATIVE=1 runs THS's local binaries instead of Docker; it picks free ports, read back via `endpoints`.
+  const native = process.env.THS_NATIVE === '1' ? ['--native'] : [];
+  const launcher = spawn(bin, ['--name', name, 'start', '--no-open', ...native], { stdio: ['ignore', 'pipe', 'pipe'] });
   let log = '';
   launcher.stdout!.on('data', (d) => (log = (log + d).slice(-4000)));
   launcher.stderr!.on('data', (d) => (log = (log + d).slice(-4000)));
