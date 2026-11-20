@@ -1,6 +1,6 @@
 {
   "name": "zcash-zip321",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Strict ZIP-321 Zcash payment request URIs: parse, build and validate, with full address checks. Zero dependencies.",
   "type": "module",
   "license": "MIT",
