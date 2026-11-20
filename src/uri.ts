@@ -130,7 +130,17 @@ function buildPayment(index: number, params: Map<string, RawParam>, validate: bo
       case 'address':
         if (value === null || !ADDRESS.test(value)) throw new ZIP321Error('INVALID_PARAM', `Invalid address in ${key}`, key);
         payment.address = value;
-        if (validate) payment.addressInfo = decodeAddress(value);
+        if (validate) {
+          try {
+            payment.addressInfo = decodeAddress(value);
+          } catch (error) {
+            // decodeAddress has no parameter context; name the one that holds the address.
+            if (error instanceof ZIP321Error && error.param === undefined) {
+              throw new ZIP321Error(error.code, error.message, key);
+            }
+            throw error;
+          }
+        }
         break;
       case 'amount':
         payment.amount = parseZec(value!, key);

@@ -159,6 +159,16 @@ test('addresses are checksummed unless validation is turned off', () => {
   assert.throws(() => parsePaymentRequest('zcash:zcAnything?amount=1'), code('INVALID_ADDRESS'));
 });
 
+test('address errors name the parameter that holds the address', () => {
+  const typo = Z_ADDR.slice(0, -1) + 'x';
+  assert.throws(() => parsePaymentRequest(`zcash:${typo}?amount=1`), code('INVALID_ADDRESS', 'address'));
+  assert.throws(
+    () => parsePaymentRequest(`zcash:?address=${T_ADDR}&amount=1&address.1=${typo}&amount.1=1`),
+    code('INVALID_ADDRESS', 'address.1'),
+  );
+  assert.throws(() => parsePaymentRequest('zcash:?address.2=zcAnything&amount.2=1'), code('INVALID_ADDRESS', 'address.2'));
+});
+
 test('Custom Asset payments need an Orchard receiver and no amount', () => {
   const asset = 'AEcnAAAAAAAAAADerb7v3q2-796tvu_erb7v3q2-796tvu_erb7v3q2-7xEiM0RVZneImQCqu8zd7v8AESIzRFVmd4iZqrvM3e7_';
   // U_ADDR is a Sapling-only Unified Address.
