@@ -1,4 +1,4 @@
-# zip321
+# zcash-zip321
 
 Parse, build and validate [ZIP-321](https://zips.z.cash/zip-0321) Zcash payment request URIs
 (`zcash:…?amount=…&memo=…`), the links and QR codes wallets use to request a payment.
@@ -7,7 +7,7 @@ Strict where the ZIP says MUST, with real address validation, and no dependencie
 in Node, browsers and edge runtimes.
 
 ```ts
-import { formatPaymentRequest, parsePaymentRequest, memoText } from 'zip321';
+import { formatPaymentRequest, parsePaymentRequest, memoText } from 'zcash-zip321';
 
 // A shop asks for 1.5 ZEC with an order number in the memo.
 const uri = formatPaymentRequest([
@@ -25,7 +25,7 @@ network;                     // 'main'
 ## Install
 
 ```sh
-npm install zip321
+npm install zcash-zip321
 ```
 
 An ES module with TypeScript types and no dependencies. It runs in Node 20+, browsers and edge runtimes;
