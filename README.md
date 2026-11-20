@@ -33,6 +33,21 @@ npm install zcash-zip321
 An ES module with TypeScript types and no dependencies. It runs in Node 20+, browsers and edge runtimes;
 the parser and address checks are about 7 kB gzipped.
 
+## Examples
+
+Projects built on zcash-zip321:
+
+| Project | What it shows | Links |
+|---|---|---|
+| **ZIP-321 Playground** | Paste or scan a `zcash:` link to see each payment, Unified Address receivers, decoded memos, and the exact parameter that makes a request invalid | [Live](https://lopeselio.github.io/zip321-playground/) · [code](https://github.com/lopeselio/zip321-playground) |
+| **Zcash Pay Link** | Build a payment link, QR code or "Pay with Zcash" button, including requests that pay several recipients | [Live](https://lopeselio.github.io/zcash-pay-link/) · [code](https://github.com/lopeselio/zcash-pay-link) |
+| **Zcash Link Guard** | A browser extension and library that preview `zcash:` links before you pay and warn about phishing, wrong networks and transparent recipients | [Download](https://github.com/lopeselio/zcash-link-guard/releases/latest) · [code](https://github.com/lopeselio/zcash-link-guard) |
+| **create-zcash-app** | A Next.js checkout that issues ZIP-321 invoices and confirms payments on a local regtest network | [code](https://github.com/lopeselio/create-zcash-app) |
+
+Planned: [zcash-batch-payouts](https://github.com/lopeselio/zcash-batch-payouts) (pay many recipients from a CSV in one
+request) and [zip321-conformance](https://github.com/lopeselio/zip321-conformance) (shared test vectors comparing ZIP-321
+implementations).
+
 ## What it checks
 
 - **The grammar.** It rejects `address.0` (leading zeros), duplicate parameters, parameters without an address,

@@ -7,11 +7,11 @@
   "author": "lopeselio",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lopeselio/zip321-js.git"
+    "url": "git+https://github.com/lopeselio/zcash-zip321.git"
   },
-  "homepage": "https://github.com/lopeselio/zip321-js#readme",
+  "homepage": "https://github.com/lopeselio/zcash-zip321#readme",
   "bugs": {
-    "url": "https://github.com/lopeselio/zip321-js/issues"
+    "url": "https://github.com/lopeselio/zcash-zip321/issues"
   },
   "engines": {
     "node": ">=20"
